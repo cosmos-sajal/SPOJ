@@ -1,0 +1,58 @@
+step 1: make a hash table(key and value pairs of the order list given)
+		e.g.
+		list L is [c,h,a,b,e,j,f,i,d,g]
+
+		hash table h:
+		c->1
+		h->2
+		a->3
+		b->4
+		e->5
+		j->6
+		f->7
+		i->8
+		d->9
+		g->10
+
+step 2: traverse the array n times(if there are n elements in the input)
+		at each traversal do this:-
+		step 2.1: pick an element from the input and assign it as the minimum element
+		step 2.2: now traverse the entire input to find the minimum element
+			step 2.3.1 : how to find the minimum element:
+						 if our assigned minimum element is ba and while traversing we encountered element bb, then since there first alphabet is same, we check their next alpabet "a" from ba and second b from "bb" , the value of a from the hash table comes out to be 3 and that of b comes out to be 4, so a is smaller and hence ba is smaller than bb.
+						 find the minimum element like this in one pass.
+			step 2.3.2 : repeat this step "n" times to sort the input.
+
+
+example : 
+
+input: ba, bb , cdie, a, j, c, d , h, ja, he, cf, dffc, acd, fi, fff
+
+1. pick ba and min = ba
+2. traverse the entire array to find the actual 1st minimum element.
+3. bb encountered.
+	ba < bb from our hash table
+	min = ba
+4. cdie encountered
+	compare cdie and min(which is ba currently)
+	compare their first alpahbet c and b, c value is 1 and b value is 4 and since 1<4 therefore c<b and hence cdie < ba
+	therefore min = cdie
+
+5. a encountered
+	compare a and min(which is cdie currently)
+	compare first element, c->1 and a->3, cdie is smaller
+6. j encoutered
+	comapare j and min(which is cdie currently)
+	compare first element , c->1 AND j->6, cdie is smaller
+7. c encountered
+	comapare c and min(which is cdie currently)
+	first alphabet is same , compare 2nd alpahbet, but "c" has no 2nd alphabet, therefore "c" is smaller than cdie, therefore min = c
+8. similarly complete array is traversed, min = c
+
+9. therefore the 1st minimum is c, output it(print it)  and remove c from the input array, so that it wont be compared again
+10. traverse the array again, make min = ba again and traverse to find the 2nd min, it comes out to be 2nd min = cf
+
+similarly the input is sorted.
+
+answer: 
+c , cf, cdie, h, he ,.......

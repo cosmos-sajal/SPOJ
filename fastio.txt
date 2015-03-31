@@ -1,0 +1,103 @@
+#include <cstdio>
+02
+ 
+03
+inline void fastRead_int(int &x) {
+04
+    register int c = getchar_unlocked();
+05
+    x = 0;
+06
+    int neg = 0;
+07
+ 
+08
+    for(; ((c<48 || c>57) && c != '-'); c = getchar_unlocked());
+09
+ 
+10
+    if(c=='-') {
+11
+        neg = 1;
+12
+        c = getchar_unlocked();
+13
+    }
+14
+ 
+15
+    for(; c>47 && c<58 ; c = getchar_unlocked()) {
+16
+        x = (x<<1) + (x<<3) + c - 48;
+17
+    }
+18
+ 
+19
+    if(neg)
+20
+        x = -x;
+21
+}
+22
+ 
+23
+inline void fastRead_string(char *str)
+24
+{
+25
+    register char c = 0;
+26
+    register int i = 0;
+27
+ 
+28
+    while (c < 33)
+29
+        c = getchar_unlocked();
+30
+ 
+31
+    while (c != '\n') {
+32
+        str[i] = c;
+33
+        c = getchar_unlocked();
+34
+        i = i + 1;
+35
+    }
+36
+ 
+37
+    str[i] = '\0';
+38
+}
+39
+ 
+40
+int main()
+41
+{
+42
+ 
+43
+  int n;
+44
+  char s[100];
+45
+ 
+46
+  fastRead_int(n);
+47
+    printf("%d\n", n);
+48
+ 
+49
+  fastRead_string(s);
+50
+    printf("%s\n", s);
+51
+  return 0;
+52
+}

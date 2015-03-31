@@ -1,0 +1,70 @@
+step 1:	sort the elements according to their starting date, if the starting date is same then sort them according to their departure date.
+		e.g. (1,2) (1,3) (3,4) (2,3) (1,1) (4,10) (5,6) (4,5) (4,6) (9,10) (7,8)
+			will be sorted as 
+			(1,1) (1,2) (1,3) (2,3) (3,4) (4,5) (4,6) (4,10) (5,6) (7,8) (9,10)
+
+step 2:	now traverse the sorted array
+		step 2.1:	pick the element.
+		step 2.2:	check if its starting date is same as the previous element.
+					if it is then place it in a new array.
+					if it is not then check in which array it can be placed(it will be placed in the array for which the departure date of last element is at least 1 less than the picked element) , if there is no such array in which the new element can be placed , then place it in a new array
+
+step 3:	count the number of arrays(this is the number of rooms required)
+
+example:
+
+sorted array:
+(1,1) (1,2) (1,3) (2,3) (3,4) (4,5) (4,6) (4,10) (5,6) (7,8) (9,10)
+
+1. pick (1,1)
+
+place it in array 1-
+
+array 1 : (1,1)
+
+2. pick (1,2)
+
+since its starting date is same as previous element , put it in a new array
+
+array 1: (1,1)
+array 2: (1,2)
+
+3.pick (1,3)
+
+since its starting date is same as previous element , put it in a new array
+
+array 1: (1,1)
+array 2: (1,2)
+array 3: (1,3)
+
+4.pick (2,3)
+
+starting date is not same as previous element's starting date, so it may be given one of the 3 rooms
+
+check array 1, its departure date is at least 1 less than the arrival date of (2,3) , so can be placed in array 1
+
+array 1: (1,1) (2,3)
+array 2: (1,2)
+array 3: (1,3)
+
+5.pick (3,4)
+
+starting date is not same as (2,3) , so it may be given one of the 3 rooms
+
+check array 1, cant be placed in array 1 as the starting date of (3,4) and departure date of (2,3) has a difference of 0(which should be at least 1) 
+check array 2, can be placed here
+
+array 1: (1,1) (2,3)
+array 2: (1,2) (3,4)
+array 3: (1,3)
+
+similarly....... final answer will be
+
+array 1: (1,1) (2,3) (4,5) (7,8)
+array 2: (1,2) (3,4) (5,6) (9,10)
+array 3: (1,3) (4,6)
+array 4: (4,10)
+
+
+so the answer is 4(number of arrays)
+
